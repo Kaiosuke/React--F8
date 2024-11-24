@@ -1,17 +1,22 @@
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Product from "./Product";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const handleCount = () => {
-    setCount((prev) => prev + 1);
+  const [show, setShow] = useState(false);
+  const handleShowData = () => {
+    setShow((prev) => !prev);
   };
   return (
     <>
       <Header />
-      <div onClick={() => handleCount()}>Click</div>
-      <div>{count}</div>
+      <div>
+        <div className="w-fit" onClick={() => handleShowData()}>
+          {!show ? "Show Product" : "Hide Product"}
+        </div>
+        {show ? <Product /> : "Product is empty"}
+      </div>
       <Footer />
     </>
   );
